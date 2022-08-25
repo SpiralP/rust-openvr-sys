@@ -39,6 +39,7 @@ fn main() {
         .header("wrapper.hpp")
         .constified_enum(".*")
         .prepend_enum_name(false)
+        .raw_line("#![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]")
         .generate()
         .expect("could not generate bindings")
         .write_to_file("bindings.rs")
