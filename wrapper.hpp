@@ -5,14 +5,18 @@
 // https://steamcommunity.com/app/358720/discussions/0/405692758722144628/
 // https://github.com/ValveSoftware/openvr/commit/6f671fc80947dbccc4a9d27bd1b89d6038d94637
 S_API intptr_t VR_InitInternal( EVRInitError *peError, EVRApplicationType eType );
-S_API void VR_ShutdownInternal();
-S_API bool VR_IsHmdPresent();
-S_API intptr_t VR_GetGenericInterface( const char *pchInterfaceVersion, EVRInitError *peError );
-S_API bool VR_IsRuntimeInstalled();
-S_API const char * VR_GetVRInitErrorAsSymbol( EVRInitError error );
-S_API const char * VR_GetVRInitErrorAsEnglishDescription( EVRInitError error );
+
 // Taken from openvr.h
+S_API bool VR_IsHmdPresent();
+S_API bool VR_IsRuntimeInstalled();
+S_API bool VR_GetRuntimePath( char *pchPathBuffer, uint32_t unBufferSize, uint32_t *punRequiredBufferSize );
+S_API const char* VR_GetVRInitErrorAsSymbol( EVRInitError error );
+S_API const char* VR_GetVRInitErrorAsEnglishDescription( EVRInitError error );
+S_API void* VR_GetGenericInterface( const char *pchInterfaceVersion, EVRInitError *peError );
 S_API bool VR_IsInterfaceVersionValid( const char *pchInterfaceVersion );
+S_API uint32_t VR_GetInitToken();
+S_API uint32_t VR_InitInternal2( EVRInitError *peError, EVRApplicationType eApplicationType, const char *pStartupInfo );
+S_API void VR_ShutdownInternal();
 
 // Taken from openvr.h; use to work around broken ABI for this event in the C header
 struct VREvent_Keyboard_t_real

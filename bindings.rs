@@ -16548,19 +16548,17 @@ extern "C" {
     pub fn VR_InitInternal(peError: *mut EVRInitError, eType: EVRApplicationType) -> isize;
 }
 extern "C" {
-    pub fn VR_ShutdownInternal();
-}
-extern "C" {
     pub fn VR_IsHmdPresent() -> bool;
 }
 extern "C" {
-    pub fn VR_GetGenericInterface(
-        pchInterfaceVersion: *const ::std::os::raw::c_char,
-        peError: *mut EVRInitError,
-    ) -> isize;
+    pub fn VR_IsRuntimeInstalled() -> bool;
 }
 extern "C" {
-    pub fn VR_IsRuntimeInstalled() -> bool;
+    pub fn VR_GetRuntimePath(
+        pchPathBuffer: *mut ::std::os::raw::c_char,
+        unBufferSize: u32,
+        punRequiredBufferSize: *mut u32,
+    ) -> bool;
 }
 extern "C" {
     pub fn VR_GetVRInitErrorAsSymbol(error: EVRInitError) -> *const ::std::os::raw::c_char;
@@ -16571,7 +16569,26 @@ extern "C" {
     ) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
+    pub fn VR_GetGenericInterface(
+        pchInterfaceVersion: *const ::std::os::raw::c_char,
+        peError: *mut EVRInitError,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
     pub fn VR_IsInterfaceVersionValid(pchInterfaceVersion: *const ::std::os::raw::c_char) -> bool;
+}
+extern "C" {
+    pub fn VR_GetInitToken() -> u32;
+}
+extern "C" {
+    pub fn VR_InitInternal2(
+        peError: *mut EVRInitError,
+        eApplicationType: EVRApplicationType,
+        pStartupInfo: *const ::std::os::raw::c_char,
+    ) -> u32;
+}
+extern "C" {
+    pub fn VR_ShutdownInternal();
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
