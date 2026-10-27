@@ -29,8 +29,8 @@ build = "build.rs"
 maintenance = { status = "passively-maintained" }
 
 [build-dependencies]
-cmake = "0.1.52"
-bindgen = "0.71.1"
+cmake = "0.1.58"
+bindgen = "0.73.2"
 
 [lib]
 name = "openvr_sys"
